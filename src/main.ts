@@ -5,6 +5,23 @@ const app = document.querySelector<HTMLDivElement>('#app')!
 // create export button
 const exportButton: HTMLButtonElement = document.createElement("button");
 
+// set the button text
+exportButton.innerText = "Export Canvas State";
+
+// set button styles
+exportButton.style.border = "solid transparent";
+exportButton.style.borderRadius = "4px";
+exportButton.style.color = "white";
+exportButton.style.backgroundColor = "#6a1b9a";
+exportButton.style.padding = "1em 2em";
+
+// functionality to export the canvas contents to a PNG image
+exportButton.addEventListener("click", () => {
+  let canvasStateImage: HTMLImageElement = document.createElement("img");
+  canvasStateImage.src = canvas.toDataURL();
+  canvasStateImage.alt = "guessingGameState";
+  app.appendChild(canvasStateImage);
+});
 
 // create canvas element
 const canvas: HTMLCanvasElement = document.createElement("canvas");
@@ -80,8 +97,8 @@ function renderGame(): void {
       let indexOfUserGuess: number = letters.indexOf(userGuess);
       let guessLevel: string;
 
-      console.log(indexOfUserGuess)
-      console.log(computerLetterIndex);
+      /* console.log(indexOfUserGuess)
+      console.log(computerLetterIndex); */
 
       if (userGuess === computerLetter) {
         hasThePlayerWon = true;
@@ -127,3 +144,4 @@ canvas.innerHTML = "Your browser does not support canvas element";
 
 // add the game to the document
 app.appendChild(canvas);
+app.appendChild(exportButton);
