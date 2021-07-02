@@ -32,7 +32,7 @@ canvas.style.height = "400px";
 
 function renderGame(): void {
   // get canvas context -> 2D
-  let context: CanvasRenderingContext2D = canvas.getContext("2d");
+  let context: any = canvas.getContext("2d");
 
   // draw game background
   context.fillStyle = "#0000ff";
