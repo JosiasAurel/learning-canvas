@@ -2,11 +2,19 @@ import './style.css'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
+// create export button
+const exportButton: HTMLButtonElement = document.createElement("button");
+
+
+// create canvas element
 const canvas: HTMLCanvasElement = document.createElement("canvas");
+
+// set canvas width and height
 canvas.style.width = "700px";
 canvas.style.height = "400px";
 
 function renderGame(): void {
+  // get canvas context -> 2D
   let context: CanvasRenderingContext2D = canvas.getContext("2d");
 
   // draw game background
