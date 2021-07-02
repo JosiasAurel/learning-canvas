@@ -53,7 +53,7 @@ function renderGame(): void {
       context.clearRect(74, 30, 55, 20);
       context.fillStyle = "#0000ff";
       context.fillRect(74, 30, 55, 20);
-      
+
       // draw the guesses text
       context.fillStyle = "#00ff00";
       context.font = "10px sans-serif";
@@ -66,17 +66,43 @@ function renderGame(): void {
 
       // Make the game harder ;)
       // computer makes a new guess
-      computerLetter = letters[Math.floor(Math.random() * letters.length)];
+      computerLetterIndex = Math.floor(Math.random() * letters.length);
+      computerLetter = letters[computerLetterIndex];
 
+      let indexOfUserGuess: number = letters.indexOf(userGuess);
+      let guessLevel: string;
 
-      console.log(computerLetter);
-      console.log(userGuess);
+      console.log(indexOfUserGuess)
+      console.log(computerLetterIndex);
+
       if (userGuess === computerLetter) {
         hasThePlayerWon = true;
       }
 
       if (hasThePlayerWon) {
         alert("You won");
+      }
+
+      if (indexOfUserGuess > computerLetterIndex) {
+        // clear area before redrawing
+        context.clearRect(10, 90, 95, 12);
+        context.fillStyle = "#0000ff";
+        context.fillRect(10, 90, 95, 12);
+
+        guessLevel = "Higher";
+        context.fillStyle = "#000000";
+        context.font = "10px sans-serif";
+        context.fillText(`You guessed ${guessLevel}`, 10, 100);
+      } else {
+        // clear area before redrawing
+        context.clearRect(10, 90, 95, 12);
+        context.fillStyle = "#0000ff";
+        context.fillRect(10, 90, 95, 12);
+        
+        guessLevel = "Lower";
+        context.fillStyle = "#000000";
+        context.font = "10px sans-serif";
+        context.fillText(`You guessed ${guessLevel}`, 10, 100);
       }
 
     });
