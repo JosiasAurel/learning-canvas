@@ -75,9 +75,9 @@ function renderGame(): void {
       playerGuessesCount += 1;
 
       // cover the previous guess count
-      context.clearRect(74, 30, 55, 20);
+      context.clearRect(74, 30, 60, 20);
       context.fillStyle = "#0000ff";
-      context.fillRect(74, 30, 55, 20);
+      context.fillRect(74, 30, 60, 20);
 
       // draw the guesses text
       context.fillStyle = "#00ff00";
@@ -106,6 +106,11 @@ function renderGame(): void {
 
       if (hasThePlayerWon) {
         alert("You won");
+
+        // draw cool message to tell the player he won
+        context.fillStyle = "#21ff00";
+        context.font = "10px cursive"
+        context.fillText("You Won 🥳🎉👯‍♂️", 60, 75);
       }
 
       if (indexOfUserGuess > computerLetterIndex) {
