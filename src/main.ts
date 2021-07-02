@@ -7,7 +7,7 @@ canvas.style.width = "600px";
 canvas.style.height = "600px";
 
 function main(): void {
-  let context: CanvasRenderingContext2D = canvas.getContext("2d");
+  let context: any = canvas.getContext("2d"); // should be CanvasRenderingContext2D
 
   // draw a box on the screen
   context.fillStyle = "#ffffaa";
